@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>{{ design.content.seo_title or "Business Website" }}</title>
+  <meta name="description" content="{{ design.content.meta_description }}" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family={{ design.typography.heading_font | replace(' ', '+') }}&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: '{{ design.typography.body_font }}', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+  <!-- HERO -->
+  <section class="min-h-screen flex items-center justify-center text-center px-6">
+    <div>
+      <h1 class="text-5xl font-bold mb-4">
+        {{ design.content.headline }}
+      </h1>
+      <p class="text-lg text-gray-600 mb-6">
+        {{ design.content.tagline }}
+      </p>
+      <button class="bg-green-600 text-white px-6 py-3 rounded-lg">
+        {{ design.content.cta_text }}
+      </button>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="py-16 px-6 max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-semibold mb-4">About Us</h2>
+    <p class="text-gray-600">
+      {{ design.content.about }}
+    </p>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="py-16 bg-gray-50 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-semibold text-center mb-10">Our Services</h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {% for service in design.content.services %}
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-lg mb-2">{{ service }}</h3>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 text-center">
+    <h2 class="text-3xl font-bold mb-4">
+      Ready to get started?
+    </h2>
+    <button class="bg-green-600 text-white px-6 py-3 rounded-lg">
+      {{ design.content.cta_text }}
+    </button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-6 text-center text-gray-500">
+    © {{ design.content.seo_title or "Business" }} — All rights reserved
+  </footer>
+
+</body>
+</html>
